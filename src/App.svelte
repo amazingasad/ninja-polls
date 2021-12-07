@@ -3,8 +3,17 @@
 	import Footer from "./components/Footer.svelte";
 	import AddPollForm from "./components/AddPollForm.svelte";
 	import Tabs from "./shared/Tabs.svelte";
+	let polls = [
+		{question: "Python or JS ?", answerA: "Python", answerB: "JavaScript", VoteA:15, VoteB:7, id: 1}
+	]
 
 
+	const handleAdd = (e) =>{
+		const poll = e.detail;
+		polls = [poll, ...polls];
+		console.log(polls);
+		activeItem = "Current Polls";
+	}
 	let items = ["Current Polls", "Add New Polls"];
 	let activeItem = "Current Polls";
 	const tabChange = (p)=>{
@@ -17,7 +26,7 @@
 	{#if activeItem === "Current Polls"}
 		<p>This is Current Polls Section</p>
 		{:else if activeItem === "Add New Polls"}
-		<AddPollForm />
+		<AddPollForm on:add={handleAdd} />
 	{/if}
 </main>
 <Footer/>
