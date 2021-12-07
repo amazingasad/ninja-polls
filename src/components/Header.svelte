@@ -5,6 +5,8 @@
 </header>
 <style>
     header{
+        margin: 0;
+        padding: 0;
         background-color: #f7f7f7;
     }
     h1{

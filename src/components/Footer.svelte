@@ -1,10 +1,10 @@
 <footer>
-    <p>CopyRight By Asad, 2021</p>
+    <p>CopyRight 2021, Poll Ninja By Asad .</p>
 </footer>
 <style>
     footer{
+        width: 340px;
         margin: 30px auto;
-        width: 210px;
         border-top: 3px solid #e5e5e5;
     }
     p{
