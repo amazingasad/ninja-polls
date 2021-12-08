@@ -1,10 +1,11 @@
 <script>
 	import Header from "./components/Header.svelte";
 	import Footer from "./components/Footer.svelte";
+	import PollList from "./components/PollList.svelte";
 	import AddPollForm from "./components/AddPollForm.svelte";
 	import Tabs from "./shared/Tabs.svelte";
 	let polls = [
-		{question: "Python or JS ?", answerA: "Python", answerB: "JavaScript", VoteA:15, VoteB:7, id: 1}
+		{question: "Python or JS ?", answerA: "Python", answerB: "JavaScript", VoteA:15, VoteB:7, id: 1},
 	]
 
 
@@ -24,7 +25,7 @@
 <main>
 	<Tabs items={items} activeItem={activeItem} on:changeTab={tabChange} />
 	{#if activeItem === "Current Polls"}
-		<p>This is Current Polls Section</p>
+		<PollList polls={polls} />
 		{:else if activeItem === "Add New Polls"}
 		<AddPollForm on:add={handleAdd} />
 	{/if}
