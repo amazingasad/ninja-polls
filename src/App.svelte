@@ -6,9 +6,7 @@
 	import Tabs from "./shared/Tabs.svelte";
 	let polls = [
 		{question: "Python or JS ?", answerA: "Python", answerB: "JavaScript", VoteA:15, VoteB:7, id: 1},
-	]
-
-
+	];
 	const handleAdd = (e) =>{
 		const poll = e.detail;
 		polls = [poll, ...polls];
@@ -19,13 +17,25 @@
 	let activeItem = "Current Polls";
 	const tabChange = (p)=>{
 		activeItem = p.detail;
-	}
+	};
+	const handleVote = (e) => {
+		const {id, option} = e.detail;
+		let copiedPoll = [...polls];
+		let upvotedPoll = copiedPoll.find((poll) => poll.id == id);
+		if(option === "a"){
+			upvotedPoll.VoteA++;
+		}
+		if(option === "b"){
+			upvotedPoll.VoteB++;
+		}
+		polls = copiedPoll;
+	};
 </script>
 <Header />
 <main>
 	<Tabs items={items} activeItem={activeItem} on:changeTab={tabChange} />
 	{#if activeItem === "Current Polls"}
-		<PollList polls={polls} />
+		<PollList polls={polls} on:vote={handleVote} />
 		{:else if activeItem === "Add New Polls"}
 		<AddPollForm on:add={handleAdd} />
 	{/if}

@@ -9,5 +9,6 @@
     }
     p{
         text-align: center;
+        color: #9e9d9d;
     }
 </style>
