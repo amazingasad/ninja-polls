@@ -4,9 +4,6 @@
 	import PollList from "./components/PollList.svelte";
 	import AddPollForm from "./components/AddPollForm.svelte";
 	import Tabs from "./shared/Tabs.svelte";
-	let polls = [
-		{question: "Python or JS ?", answerA: "Python", answerB: "JavaScript", VoteA:15, VoteB:7, id: 1},
-	];
 	const handleAdd = (e) =>{
 		const poll = e.detail;
 		polls = [poll, ...polls];
@@ -35,7 +32,7 @@
 <main>
 	<Tabs items={items} activeItem={activeItem} on:changeTab={tabChange} />
 	{#if activeItem === "Current Polls"}
-		<PollList polls={polls} on:vote={handleVote} />
+		<PollList on:vote={handleVote} />
 		{:else if activeItem === "Add New Polls"}
 		<AddPollForm on:add={handleAdd} />
 	{/if}
